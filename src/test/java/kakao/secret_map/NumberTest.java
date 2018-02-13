@@ -1,19 +1,26 @@
-import org.jboss.arquillian.container.test.api.Deployment;
-import org.jboss.arquillian.junit.Arquillian;
-import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.asset.EmptyAsset;
-import org.jboss.shrinkwrap.api.spec.JavaArchive;
-import org.junit.runner.RunWith;
+package kakao.secret_map;
 
-import static org.junit.Assert.*;
+import org.junit.Test;
 
-@RunWith(Arquillian.class)
+import static org.junit.Assert.assertEquals;
+
 public class NumberTest {
-    @Deployment
-    public static JavaArchive createDeployment() {
-        return ShrinkWrap.create(JavaArchive.class)
-                .addClass(kakao.secret_map.Number.class)
-                .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
+
+    @Test
+    public void 진수_변환() {
+
+        assertEquals("#  #", new BinaryString(9).toString());
+
+        assertEquals("#### ", new Number(30).toString());
+
+        assertEquals("#####", new Number(30).orWise(new Number(9)).toString());
     }
 
+    @Test
+    public void 여러개의_진수_변환() {
+        Numbers numbers = new Numbers(10, 20, 30, 40, 50);
+        System.out.println(numbers);
+
+        System.out.println(new Numbers(9, 20, 28, 18, 11).orWise(new Numbers(30, 1, 21, 17, 28)));
+    }
 }
