@@ -24,7 +24,7 @@ public class Score {
     }
 
     private void add(Point point) {
-        if (point.hasStarOption() && score.size() != 0) {
+        if (point.has(Option.STAR) && score.size() != 0) {
             int prevIndex = score.size() - 1;
             Point previous = score.get(prevIndex);
 

@@ -48,11 +48,6 @@ public class BasicPointTest {
         assertThat(-4l, is(new Options(Option.ACHA).add(Option.STAR).calculate(2)));
     }
 
-    @Test (expected = IllegalArgumentException.class)
-    public void 중복된_옵션() {
-        new Options(Option.STAR).add(Option.STAR);
-    }
-
     @Test
     public void 던지기() {
         assertThat(2L ,is(new Point("2S").calculate()));

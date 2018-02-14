@@ -29,8 +29,8 @@ public class Point {
         return new Point(basicPoint, options.add(aPoint.options.unique()));
     }
 
-    public boolean hasStarOption() {
-        return options != null && Option.STAR == options.unique();
+    public boolean has(Option option) {
+        return options != null && option == options.unique();
     }
 
     public long calculate() {
