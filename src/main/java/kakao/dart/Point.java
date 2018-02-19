@@ -22,11 +22,11 @@ public class Point {
         this.options = options;
     }
 
-    public Point addOption(Point aPoint) {
+    public Point addOption(Point point) {
         if (options == null) {
             options = new Options(new ArrayList<>());
         }
-        return new Point(basicPoint, options.add(aPoint.options.unique()));
+        return new Point(basicPoint, options.add(point.options.unique()));
     }
 
     public boolean has(Option option) {

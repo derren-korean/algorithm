@@ -10,6 +10,7 @@ public class BasicPoint {
     private Bonus bonus;
 
     public BasicPoint(String text) {
+        if (text == null || text.isEmpty()) throw new IllegalStateException();
         pointNumber = matchPoint(text);
         bonus = matchArea(text);
     }

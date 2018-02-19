@@ -57,7 +57,6 @@ public class BasicPointTest {
         assertThat(4L,is(new Point(new BasicPoint("2S"), new Options(Option.STAR)).calculate()));
         assertThat(-2L,is(new Point(new BasicPoint("2S"), new Options(Option.ACHA)).calculate()));
         assertThat(-4L,is(new Point(new BasicPoint("2S"), new Options(Option.STAR).add(Option.ACHA)).calculate()));
-
     }
 
     @Test

@@ -14,18 +14,19 @@ public class Score {
 
     private void fillScore(String text) {
         String[] tokens = text.split("[^\\d]{1,2}");
-        int index = 1;
-        while(index < tokens.length) {
-            String point = text.substring(0, text.indexOf(tokens[index++]));
+
+        for (int index = 1; index < tokens.length; index++) {
+            String point = text.substring(0, text.indexOf(tokens[index]));
             add(new Point(point));
             text = text.substring(point.length());
         }
+
         add(new Point(text));
     }
 
     private void add(Point point) {
-        if (point.has(Option.STAR) && score.size() != 0) {
-            int prevIndex = score.size() - 1;
+        if (!score.isEmpty() && point.has(Option.STAR)) {
+            int prevIndex = score.size() -1;
             Point previous = score.get(prevIndex);
 
             score.set(prevIndex, previous.addOption(point));
