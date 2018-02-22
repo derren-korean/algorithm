@@ -12,13 +12,15 @@ public class City {
         this.city = city.trim().toLowerCase();
     }
 
-    public boolean same(City city) {
-        if (city == null) return false;
-        return this.city.toString().equals(city.toString());
-    }
-
     @Override
     public String toString() {
         return city;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        return this.city.toString().equals(o.toString());
     }
 }

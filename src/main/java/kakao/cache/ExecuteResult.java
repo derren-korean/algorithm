@@ -25,6 +25,6 @@ package kakao.cache;
     }
 
     public int sum() {
-        return hit.sum() + miss.sum();
+        return hit.toInt() + miss.toInt();
     }
 }

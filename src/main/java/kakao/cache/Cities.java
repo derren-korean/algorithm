@@ -1,10 +1,10 @@
 package kakao.cache;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+        import java.util.ArrayList;
+        import java.util.Arrays;
+        import java.util.List;
+        import java.util.stream.Collectors;
+        import java.util.stream.Stream;
 
 public class Cities {
     private static final int MAX_LENGTH = 100001;
@@ -27,9 +27,13 @@ public class Cities {
     }
 
     private void make(List<City> cities) {
-        if (cities.size() == 0 || cities.size() > MAX_LENGTH) throw new IllegalArgumentException();
+        if (cities.size() > MAX_LENGTH) throw new IllegalArgumentException();
         this.cities = new ArrayList<>();
         this.cities.addAll(cities);
+    }
+
+    public boolean contains(City city) {
+        return cities.stream().anyMatch(_city -> _city.equals(city));
     }
 
     public Cities addFirst(City city) {
@@ -37,20 +41,9 @@ public class Cities {
         return new Cities(cities);
     }
 
-    public int size() {
-        return cities.size();
-    }
-
-    public boolean contains(City city) {
-        return cities.stream().anyMatch(_city -> _city.same(city));
-    }
-
-    public Stream<City> stream() {
-        return cities.stream();
-    }
-
     public Cities remove(City city) {
-        return remove(indexOf(city));
+        cities.remove(city);
+        return new Cities(cities);
     }
 
     public Cities remove(int index) {
@@ -58,11 +51,11 @@ public class Cities {
         return new Cities(cities);
     }
 
-    private int indexOf(City city) {
-        int index = 0;
-        while (index < cities.size()) {
-            if (cities.get(index++).same(city)) break;
-        }
-        return --index;
+    public int size() {
+        return cities.size();
+    }
+
+    public Stream<City> stream() {
+        return cities.stream();
     }
 }

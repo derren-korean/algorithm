@@ -16,6 +16,8 @@ public class Cache {
     }
 
     public Cache executeLRU(City city) {
+        if (cacheSize.same(0)) return new Cache(cacheSize.toInt());
+
         if (contains(city)) {
             remove(city);
         }
@@ -27,28 +29,27 @@ public class Cache {
         return addFirst(city);
     }
 
-    public boolean isFull() {
-        if (cacheSize.same(0)) return false;
-        return cities.size() >= cacheSize.toInt();
-    }
-
-    public int lastIndex() {
-        return cities.size()-1;
-    }
-
     public boolean contains(City city) {
         return cities.contains(city);
     }
 
-    public Cache addFirst(City city) {
+    private boolean isFull() {
+        return cities.size() >= cacheSize.toInt();
+    }
+
+    private int lastIndex() {
+        return cities.size()-1;
+    }
+
+    private Cache addFirst(City city) {
         return new Cache(cacheSize, cities.addFirst(city));
     }
 
-    public Cache remove(City city) {
+    private Cache remove(City city) {
         return new Cache(cacheSize, cities.remove(city));
     }
 
-    public Cache remove(int index) {
+    private Cache remove(int index) {
         return new Cache(cacheSize, cities.remove(index));
     }
 }

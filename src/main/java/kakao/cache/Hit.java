@@ -14,7 +14,7 @@ package kakao.cache;
     }
 
     @Override
-    public int sum() {
+    public int toInt() {
         return count;
     }
 }
